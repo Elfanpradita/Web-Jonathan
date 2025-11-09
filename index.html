@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-M">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portofolio Jonathan Chandra</title>
+    <title>Portofolio [Nama Anda]</title>
     
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <style>
         /* --- 1. Pengaturan Global & Variabel Warna --- */
         :root {
@@ -17,6 +19,10 @@
             --nav-bg: rgba(255, 255, 255, 0.7);
             --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
             --border-color: #eee;
+            
+            /* [BARU] Warna untuk tombol link (dibalik) */
+            --link-btn-bg: var(--text-color);
+            --link-btn-text: var(--bg-color);
         }
 
         body.dark-mode {
@@ -29,6 +35,10 @@
             --nav-bg: rgba(30, 30, 30, 0.7);
             --shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
             --border-color: #333;
+
+            /* [BARU] Warna untuk tombol link (dibalik) */
+            --link-btn-bg: var(--text-color);
+            --link-btn-text: var(--bg-color);
         }
 
         * {
@@ -38,7 +48,6 @@
         }
 
         html {
-            /* Efek scroll yang mulus saat klik nav-link */
             scroll-behavior: smooth;
         }
 
@@ -58,7 +67,7 @@
 
         section {
             padding: 5rem 0;
-            min-height: 100vh; /* Membuat tiap section setinggi layar */
+            min-height: 100vh; 
             border-bottom: 1px solid var(--border-color);
             display: flex;
             flex-direction: column;
@@ -84,7 +93,6 @@
             width: 100%;
             top: 0;
             z-index: 1000;
-            /* Efek Glassmorphism */
             background: var(--nav-bg);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
@@ -124,7 +132,6 @@
             transition: color 0.3s, border-bottom 0.3s;
         }
 
-        /* Kelas 'active' ini ditambahkan oleh JavaScript */
         nav ul li a.active,
         nav ul li a:hover {
             color: var(--primary-color);
@@ -188,7 +195,6 @@
         /* --- 6. Section: Projects (Grid) --- */
         #projects .project-grid {
             display: grid;
-            /* Membuat grid responsif */
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
         }
@@ -227,48 +233,57 @@
             font-weight: 500;
         }
 
-        /* --- 7. Section: Contact (Form) --- */
-        #contact form {
+        /* === [BAGIAN CSS DIUBAH] === */
+        /* --- 7. Section: Contact (Link List) --- */
+        #contact .container {
+            /* [BARU] Pusatkan semua konten di section kontak */
+            max-width: 700px;
+            text-align: center;
+        }
+
+        .link-list {
+            margin-top: 2rem;
             display: flex;
             flex-direction: column;
-            max-width: 600px;
-            margin: 0 auto;
+            gap: 1.25rem; /* Jarak antar tombol */
         }
 
-        #contact input,
-        #contact textarea {
-            font-family: inherit;
-            font-size: 1rem;
-            padding: 1rem;
-            margin-bottom: 1rem;
-            border: 1px solid var(--border-color);
-            border-radius: 5px;
-            background: var(--card-bg);
-            color: var(--text-color);
-            transition: border-color 0.3s, background 0.3s;
-        }
-
-        #contact input:focus,
-        #contact textarea:focus {
-            outline: none;
-            border-color: var(--primary-color);
-        }
-
-        #contact button {
-            background: var(--primary-color);
-            color: #fff;
-            padding: 1rem 2rem;
-            border: none;
-            border-radius: 5px;
+        .link-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem 1.5rem;
+            text-decoration: none;
+            
+            /* [BARU] Style tombol seperti gambar (warna terbalik) */
+            background-color: var(--link-btn-bg); 
+            color: var(--link-btn-text); 
+            
+            border: 2px solid var(--link-btn-bg);
+            border-radius: 50px; /* Sangat bulat */
             font-size: 1.1rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: opacity 0.3s;
+            font-weight: 500;
+            box-shadow: var(--shadow);
+            transition: transform 0.2s, background-color 0.3s, color 0.3s, border-color 0.3s;
         }
 
-        #contact button:hover {
-            opacity: 0.8;
+        .link-button:hover {
+            transform: scale(1.03); /* Sedikit membesar saat hover */
+            
+            /* [BARU] Saat hover, gunakan warna primer */
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            color: #fff; 
         }
+
+        .link-button i {
+            margin-right: 1rem; /* Jarak antara ikon dan teks */
+            font-size: 1.3rem; /* Ukuran ikon */
+            width: 25px; /* Memberi 'ruang' tetap untuk ikon */
+            text-align: center;
+        }
+        /* === [AKHIR BAGIAN CSS DIUBAH] === */
+
 
         /* --- 8. Footer --- */
         footer {
@@ -276,7 +291,7 @@
             padding: 2rem 0;
             background: var(--card-bg);
             border-top: 1px solid var(--border-color);
-            margin-top: -1px; /* Menghilangkan border ganda dengan section terakhir */
+            margin-top: -1px; 
         }
         
         /* --- 9. Responsif (Mobile) --- */
@@ -321,7 +336,7 @@
     <header>
         <nav>
             <div class="container">
-                <a href="#home" class="logo">Jonathan Chandra</a>
+                <a href="#home" class="logo">[Nama Anda]</a>
                 <ul>
                     <li><a href="#home" class="nav-link active">Home</a></li>
                     <li><a href="#about" class="nav-link">Tentang</a></li>
@@ -337,7 +352,7 @@
         <section id="home">
             <div class="container">
                 <h1>Selamat Datang di Portofolio Saya</h1>
-                <p>Saya Jonathan Chandra, seorang Data Science yang bersemangat.</p>
+                <p>Saya [Nama Anda], seorang [Pekerjaan Anda, cth: Web Developer] yang bersemangat.</p>
                 <a href="#projects" class="cta-button">Lihat Karya Saya</a>
             </div>
         </section>
@@ -346,9 +361,9 @@
             <div class="container">
                 <h2>Tentang Saya</h2>
                 <div class="about-content">
-                    <img src="Foto_Profil.jpg">
+                    <img src="https://via.placeholder.com/250" alt="Foto Profil Anda">
                     <div>
-                        <p>Halo! Saya adalah seorang profesional yang berdedikasi dengan pengalaman di bidang [Bidang Anda]. Saya memiliki keahlian dalam Analisis Data, [Keahlian 2], dan [Keahlian 3].</p>
+                        <p>Halo! Saya adalah seorang profesional yang berdedikasi dengan pengalaman di bidang [Bidang Anda]. Saya memiliki keahlian dalam [Keahlian 1], [Keahlian 2], dan [Keahlian 3].</p>
                         <p>Saya selalu antusias untuk mempelajari hal-hal baru dan berkolaborasi dalam proyek-proyek yang menantang dan berdampak positif.</p>
                     </div>
                 </div>
@@ -392,21 +407,47 @@
 
         <section id="contact">
             <div class="container">
-                <h2 style="text-align: center;">Hubungi Saya</h2>
-                <p style="text-align: center;">Punya pertanyaan atau ingin bekerja sama? Kirimkan saya pesan!</p>
-                <form action="#" method="POST">
-                    <input type="text" name="name" placeholder="Nama Anda" required>
-                    <input type="email" name="email" placeholder="Email Anda" required>
-                    <textarea name="message" rows="7" placeholder="Pesan Anda" required></textarea>
-                    <button type="submit">Kirim Pesan</button>
-                </form>
+                <h2>Hubungi Saya</h2>
+                <p>Temukan saya di platform lain di bawah ini. Mari terhubung!</p>
+                
+                <div class="link-list">
+                    
+                    <a href="#" target="_blank" class="link-button">
+                        <i class="fab fa-instagram"></i> Instagram
+                    </a>
+                    
+                    <a href="#" target="_blank" class="link-button">
+                        <i class="fab fa-tiktok"></i> TikTok
+                    </a>
+                    
+                    <a href="#" target="_blank" class="link-button">
+                        <i class="fab fa-youtube"></i> YouTube
+                    </a>
+
+                    <a href="#" target="_blank" class="link-button">
+                        <i class="fab fa-linkedin-in"></i> LinkedIn
+                    </a>
+                    
+                    <a href="#" target="_blank" class="link-button">
+                        <i class="fab fa-github"></i> GitHub
+                    </a>
+                    
+                    <a href="#" target="_blank" class="link-button">
+                        <i class="fas fa-globe"></i> Web Pribadi
+                    </a>
+                    
+                    <a href="mailto:emailanda@gmail.com" class="link-button">
+                        <i class="fas fa-envelope"></i> Email Saya
+                    </a>
+
+                </div>
             </div>
         </section>
-    </main>
+        </main>
 
     <footer>
         <div class="container">
-            <p>&copy; 2025 Jonathan Chandra. Dibuat dengan ❤️.</p>
+            <p>&copy; 2025 [Nama Anda]. Dibuat dengan ❤️.</p>
         </div>
     </footer>
 
@@ -415,10 +456,7 @@
         const toggleButton = document.getElementById('dark-mode-toggle');
 
         toggleButton.addEventListener('click', () => {
-            // Toggle kelas 'dark-mode' pada elemen body
             document.body.classList.toggle('dark-mode');
-
-            // Mengubah teks tombol
             if (document.body.classList.contains('dark-mode')) {
                 toggleButton.textContent = 'Mode Terang';
             } else {
@@ -429,28 +467,19 @@
         /* --- 2. Skrip untuk Highlight Nav-link saat Scroll (Intersection Observer) --- */
         const sections = document.querySelectorAll('section');
         const navLinks = document.querySelectorAll('nav ul li a');
-
-        // Opsi untuk Intersection Observer
         const observerOptions = {
-            root: null, // 'viewport'
+            root: null, 
             rootMargin: '0px',
-            threshold: 0.6 // 60% dari section harus terlihat
+            threshold: 0.6 
         };
 
-        // Callback function saat section masuk/keluar viewport
         const observerCallback = (entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    // Dapatkan id dari section yang sedang terlihat
                     const currentSectionId = entry.target.id;
-                    
-                    // Hapus kelas 'active' dari semua nav-link
                     navLinks.forEach(link => {
                         link.classList.remove('active');
                     });
-
-                    // Tambahkan kelas 'active' ke nav-link yang sesuai
-                    // Cari link yang href-nya mengandung id section
                     const activeLink = document.querySelector(`nav ul li a[href="#${currentSectionId}"]`);
                     if (activeLink) {
                         activeLink.classList.add('active');
@@ -459,10 +488,7 @@
             });
         };
 
-        // Buat observer baru
         const observer = new IntersectionObserver(observerCallback, observerOptions);
-
-        // Amati setiap section
         sections.forEach(section => {
             observer.observe(section);
         });
