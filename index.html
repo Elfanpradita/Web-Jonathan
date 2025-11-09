@@ -1,224 +1,472 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Contoh Website — Jonathan</title>
-  <meta name="description" content="Contoh website HTML/CSS/JS responsif dengan navbar, hero, fitur, dan kontak." />
-  <style>
-    :root{
-      --accent:#120231; /* warna ungu gelap sesuai permintaan */
-      --accent-700:#0f0026;
-      --muted:#6b7280;
-      --card:#ffffff;
-      --bg:#f7f7fb;
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;font-family:Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-      background:linear-gradient(180deg,#fbfbff 0%, var(--bg) 100%);
-      color:#0f172a;line-height:1.5;
-      -webkit-font-smoothing:antialiased;
-    }
+    <meta charset="UTF-M">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio [Nama Anda]</title>
+    
+    <style>
+        /* --- 1. Pengaturan Global & Variabel Warna --- */
+        :root {
+            /* Mode Terang (Light Mode) */
+            --bg-color: #f4f7f6;
+            --text-color: #333;
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --card-bg: #ffffff;
+            --nav-bg: rgba(255, 255, 255, 0.7);
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --border-color: #eee;
+        }
 
-    /* NAVBAR */
-    .navbar{background:var(--accent);color:#fff;position:sticky;top:0;z-index:40;backdrop-filter:blur(6px);}
-    .nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:12px 18px;gap:12px}
-    .brand{display:flex;align-items:center;gap:10px;font-weight:700}
-    .logo{width:36px;height:36px;background:linear-gradient(135deg,#6b21a8,#120231);border-radius:8px;display:inline-grid;place-items:center;color:#fff;font-weight:800}
-    .nav-links{display:flex;gap:14px;align-items:center}
-    .nav-links a{color:rgba(255,255,255,0.95);text-decoration:none;padding:8px 10px;border-radius:8px;font-weight:600}
-    .nav-links a:hover{background:rgba(255,255,255,0.06)}
-    .cta{background:#fff;color:var(--accent);padding:8px 12px;border-radius:8px;font-weight:700}
+        body.dark-mode {
+            /* Mode Gelap (Dark Mode) */
+            --bg-color: #121212;
+            --text-color: #f4f7f6;
+            --primary-color: #4dabf7;
+            --secondary-color: #adb5bd;
+            --card-bg: #1e1e1e;
+            --nav-bg: rgba(30, 30, 30, 0.7);
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            --border-color: #333;
+        }
 
-    /* mobile menu */
-    .hamburger{display:none;background:transparent;border:0;color:#fff;font-size:22px}
-    @media (max-width:800px){
-      .nav-links{display:none}
-      .hamburger{display:inline-block}
-    }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    /* HERO */
-    .hero{max-width:1100px;margin:36px auto;padding:28px 18px;display:grid;grid-template-columns:1fr 380px;gap:28px;align-items:center}
-    @media (max-width:980px){.hero{grid-template-columns:1fr}}
-    .hero-card{background:linear-gradient(180deg, rgba(255,255,255,0.85), rgba(255,255,255,0.95));padding:28px;border-radius:14px;box-shadow:0 8px 30px rgba(15,23,42,0.06)}
-    .hero h1{margin:0 0 12px;font-size:28px}
-    .hero p{margin:0 0 20px;color:var(--muted)}
-    .btn-row{display:flex;gap:12px}
-    .btn{padding:10px 14px;border-radius:10px;border:0;font-weight:700;cursor:pointer}
-    .btn-primary{background:var(--accent);color:#fff}
-    .btn-ghost{background:transparent;border:1px solid #e6e6ef}
+        html {
+            /* Efek scroll yang mulus saat klik nav-link */
+            scroll-behavior: smooth;
+        }
 
-    /* FEATURES */
-    .features{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:22px}
-    @media (max-width:980px){.features{grid-template-columns:repeat(2,1fr)}}
-    @media (max-width:640px){.features{grid-template-columns:1fr}}
-    .feature{background:var(--card);padding:18px;border-radius:12px;box-shadow:0 6px 20px rgba(15,23,42,0.04)}
-    .feature h3{margin:6px 0 8px}
-    .feature p{margin:0;color:var(--muted);font-size:14px}
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            transition: background-color 0.3s, color 0.3s;
+        }
 
-    /* SIDEBAR CARD */
-    .side-card{background:linear-gradient(180deg,#fff,#fbfbff);padding:18px;border-radius:12px;box-shadow:0 10px 30px rgba(18,2,49,0.06)}
-    .side-card h4{margin:0 0 8px}
-    .meta{display:flex;flex-direction:column;gap:6px;font-size:14px;color:var(--muted)}
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
 
-    /* CONTACT */
-    .contact{max-width:1100px;margin:32px auto;padding:18px}
-    .contact-form{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-    @media (max-width:800px){.contact-form{grid-template-columns:1fr}}
-    .input,textarea{width:100%;padding:10px;border-radius:8px;border:1px solid #e6e6ef}
-    textarea{min-height:120px;resize:vertical}
-    .footer{padding:28px 18px;text-align:center;color:var(--muted)}
+        section {
+            padding: 5rem 0;
+            min-height: 100vh; /* Membuat tiap section setinggi layar */
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
 
-    /* small helpers */
-    .muted{color:var(--muted)}
-    .grid{display:grid}
-  </style>
+        h1, h2, h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        h1 { font-size: 3rem; }
+        h2 { font-size: 2.2rem; }
+        p { 
+            font-size: 1.1rem;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+
+        /* --- 2. Header & Navigasi (Glassmorphism) --- */
+        header {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            /* Efek Glassmorphism */
+            background: var(--nav-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+            transition: background 0.3s, border-color 0.3s;
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 60px;
+        }
+
+        nav .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            padding: 5px 0;
+            border-bottom: 2px solid transparent;
+            transition: color 0.3s, border-bottom 0.3s;
+        }
+
+        /* Kelas 'active' ini ditambahkan oleh JavaScript */
+        nav ul li a.active,
+        nav ul li a:hover {
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--primary-color);
+        }
+
+        /* --- 3. Tombol Dark Mode --- */
+        #dark-mode-toggle {
+            background: var(--secondary-color);
+            color: var(--bg-color);
+            border: none;
+            padding: 0.5rem 0.7rem;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: background 0.3s;
+        }
+
+        #dark-mode-toggle:hover {
+            opacity: 0.8;
+        }
+
+        /* --- 4. Section: Hero (Home) --- */
+        #home {
+            text-align: center;
+        }
+        
+        #home .cta-button {
+            display: inline-block;
+            background: var(--primary-color);
+            color: #fff;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            margin-top: 1rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        #home .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 123, 255, 0.3);
+        }
+
+        /* --- 5. Section: About --- */
+        #about .about-content {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        #about img {
+            width: 250px;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 5px solid var(--primary-color);
+            box-shadow: var(--shadow);
+        }
+
+        /* --- 6. Section: Projects (Grid) --- */
+        #projects .project-grid {
+            display: grid;
+            /* Membuat grid responsif */
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+        }
+
+        .project-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .project-card-content {
+            padding: 1.5rem;
+        }
+        
+        .project-card h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        .project-card a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        /* --- 7. Section: Contact (Form) --- */
+        #contact form {
+            display: flex;
+            flex-direction: column;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        #contact input,
+        #contact textarea {
+            font-family: inherit;
+            font-size: 1rem;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            background: var(--card-bg);
+            color: var(--text-color);
+            transition: border-color 0.3s, background 0.3s;
+        }
+
+        #contact input:focus,
+        #contact textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        #contact button {
+            background: var(--primary-color);
+            color: #fff;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: opacity 0.3s;
+        }
+
+        #contact button:hover {
+            opacity: 0.8;
+        }
+
+        /* --- 8. Footer --- */
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            background: var(--card-bg);
+            border-top: 1px solid var(--border-color);
+            margin-top: -1px; /* Menghilangkan border ganda dengan section terakhir */
+        }
+        
+        /* --- 9. Responsif (Mobile) --- */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            h2 { font-size: 1.8rem; }
+            
+            nav .container {
+                flex-direction: column;
+                height: auto;
+                padding: 1rem;
+            }
+            
+            nav ul {
+                margin-top: 1rem;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            
+            nav ul li {
+                margin: 0.5rem;
+            }
+            
+            #dark-mode-toggle {
+                margin-top: 1rem;
+            }
+
+            section {
+                padding: 4rem 0;
+            }
+            
+            #about .about-content {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+    </style>
 </head>
 <body>
-  <header class="navbar" role="banner">
-    <div class="nav-inner">
-      <div class="brand">
-        <div class="logo">J</div>
-        <div>
-          <div style="font-size:14px">Jonathan</div>
-          <div style="font-size:11px;color:rgba(255,255,255,0.8);margin-top:2px">Contoh Website</div>
-        </div>
-      </div>
 
-      <nav class="nav-links" aria-label="Menu utama">
-        <a href="#home">Beranda</a>
-        <a href="#fitur">Fitur</a>
-        <a href="#tentang">Tentang</a>
-        <a href="#kontak" class="cta">Kontak</a>
-      </nav>
-
-      <button class="hamburger" aria-expanded="false" aria-label="Buka menu" id="hamb">☰</button>
-    </div>
-
-    <!-- expandable mobile menu -->
-    <div id="mobileMenu" style="display:none;background:linear-gradient(180deg,var(--accent),var(--accent-700));padding:12px 18px;color:#fff">
-      <a href="#home" style="display:block;padding:8px 0;color:#fff;text-decoration:none">Beranda</a>
-      <a href="#fitur" style="display:block;padding:8px 0;color:#fff;text-decoration:none">Fitur</a>
-      <a href="#tentang" style="display:block;padding:8px 0;color:#fff;text-decoration:none">Tentang</a>
-      <a href="#kontak" style="display:block;padding:8px 0;color:#fff;text-decoration:none">Kontak</a>
-    </div>
-  </header>
-
-  <main>
-    <section id="home" class="hero">
-      <div class="hero-card">
-        <h1>Website sederhana, modern, dan responsif</h1>
-        <p>Contoh template satu file (HTML/CSS/JS). Cocok untuk portofolio, landing page produk, atau proyek demonstrasi singkat.</p>
-        <div class="btn-row">
-          <button class="btn btn-primary" onclick="document.getElementById('kontak').scrollIntoView({behavior:'smooth'})">Hubungi Kami</button>
-          <button class="btn btn-ghost" onclick="toggleTheme()">Toggle Tema</button>
-        </div>
-
-        <section id="fitur" style="margin-top:20px">
-          <div class="features">
-            <div class="feature">
-              <strong>Responsif</strong>
-              <h3>Berfungsi di semua perangkat</h3>
-              <p class="muted">Layout fleksibel yang menyesuaikan dengan layar mobile dan desktop.</p>
+    <header>
+        <nav>
+            <div class="container">
+                <a href="#home" class="logo">[Nama Anda]</a>
+                <ul>
+                    <li><a href="#home" class="nav-link active">Home</a></li>
+                    <li><a href="#about" class="nav-link">Tentang</a></li>
+                    <li><a href="#projects" class="nav-link">Projek</a></li>
+                    <li><a href="#contact" class="nav-link">Kontak</a></li>
+                </ul>
+                <button id="dark-mode-toggle">Mode Gelap</button>
             </div>
-            <div class="feature">
-              <strong>Ringan</strong>
-              <h3>Kecepatan dan performa</h3>
-              <p class="muted">Hanya HTML/CSS/JS minimal sehingga cepat dimuat.</p>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home">
+            <div class="container">
+                <h1>Selamat Datang di Portofolio Saya</h1>
+                <p>Saya [Nama Anda], seorang [Pekerjaan Anda, cth: Web Developer] yang bersemangat.</p>
+                <a href="#projects" class="cta-button">Lihat Karya Saya</a>
             </div>
-            <div class="feature">
-              <strong>Mudah dikustom</strong>
-              <h3>Ganti teks, warna, dan gambar</h3>
-              <p class="muted">Struktur kode yang jelas agar mudah dimodifikasi.</p>
-            </div>
-          </div>
         </section>
-      </div>
 
-      <aside class="side-card">
-        <h4>Ringkasan</h4>
-        <div class="meta">
-          <div><strong>Stack:</strong> HTML • CSS • JavaScript</div>
-          <div><strong>Warna utama:</strong> <code>#120231</code></div>
-          <div><strong>Layout:</strong> Responsif</div>
+        <section id="about">
+            <div class="container">
+                <h2>Tentang Saya</h2>
+                <div class="about-content">
+                    <img src="https://via.placeholder.com/250" alt="Foto Profil Anda">
+                    <div>
+                        <p>Halo! Saya adalah seorang profesional yang berdedikasi dengan pengalaman di bidang [Bidang Anda]. Saya memiliki keahlian dalam [Keahlian 1], [Keahlian 2], dan [Keahlian 3].</p>
+                        <p>Saya selalu antusias untuk mempelajari hal-hal baru dan berkolaborasi dalam proyek-proyek yang menantang dan berdampak positif.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects">
+            <div class="container">
+                <h2>Projek Saya</h2>
+                <div class="project-grid">
+                    <div class="project-card">
+                        <img src="https://via.placeholder.com/400x200" alt="Gambar Projek 1">
+                        <div class="project-card-content">
+                            <h3>Nama Projek 1</h3>
+                            <p>Deskripsi singkat tentang projek ini, teknologi yang digunakan, dan apa tujuannya.</p>
+                            <a href="#" target="_blank">Lihat Demo</a> | 
+                            <a href="#" target="_blank">Lihat Kode</a>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <img src="https://via.placeholder.com/400x200" alt="Gambar Projek 2">
+                        <div class="project-card-content">
+                            <h3>Nama Projek 2</h3>
+                            <p>Deskripsi singkat tentang projek ini, teknologi yang digunakan, dan apa tujuannya.</p>
+                            <a href="#" target="_blank">Lihat Demo</a> | 
+                            <a href="#" target="_blank">Lihat Kode</a>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <img src="https://via.placeholder.com/400x200" alt="Gambar Projek 3">
+                        <div class="project-card-content">
+                            <h3>Nama Projek 3</h3>
+                            <p>Deskripsi singkat tentang projek ini, teknologi yang digunakan, dan apa tujuannya.</p>
+                            <a href="#" target="_blank">Lihat Demo</a> | 
+                            <a href="#" target="_blank">Lihat Kode</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <div class="container">
+                <h2 style="text-align: center;">Hubungi Saya</h2>
+                <p style="text-align: center;">Punya pertanyaan atau ingin bekerja sama? Kirimkan saya pesan!</p>
+                <form action="#" method="POST">
+                    <input type="text" name="name" placeholder="Nama Anda" required>
+                    <input type="email" name="email" placeholder="Email Anda" required>
+                    <textarea name="message" rows="7" placeholder="Pesan Anda" required></textarea>
+                    <button type="submit">Kirim Pesan</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 [Nama Anda]. Dibuat dengan ❤️.</p>
         </div>
-        <div style="margin-top:12px">
-          <small class="muted">Gunakan tombol "Toggle Tema" untuk demo mode gelap/terang sederhana.</small>
-        </div>
-      </aside>
-    </section>
+    </footer>
 
-    <section id="tentang" style="max-width:1100px;margin:10px auto;padding:18px">
-      <div style="background:var(--card);padding:18px;border-radius:12px;box-shadow:0 8px 30px rgba(15,23,42,0.04)">
-        <h2>Tentang Project</h2>
-        <p class="muted">Ini adalah contoh website satu file yang bisa kamu ambil, edit, dan deploy di GitHub Pages atau server manapun. Semua kode berada di satu file untuk kemudahan pembelajaran.</p>
-      </div>
-    </section>
+    <script>
+        /* --- 1. Skrip untuk Dark Mode Toggle --- */
+        const toggleButton = document.getElementById('dark-mode-toggle');
 
-    <section id="kontak" class="contact">
-      <div style="max-width:1100px;margin:0 auto;">
-        <h2>Kontak</h2>
-        <form id="contactForm" onsubmit="handleSubmit(event)">
-          <div class="contact-form">
-            <input class="input" type="text" id="name" placeholder="Nama" required />
-            <input class="input" type="email" id="email" placeholder="Email" required />
-            <input class="input" type="text" id="subject" placeholder="Subjek" />
-            <textarea id="message" placeholder="Pesan" required></textarea>
-          </div>
-          <div style="margin-top:12px">
-            <button type="submit" class="btn btn-primary">Kirim Pesan</button>
-          </div>
-        </form>
-      </div>
-    </section>
-  </main>
+        toggleButton.addEventListener('click', () => {
+            // Toggle kelas 'dark-mode' pada elemen body
+            document.body.classList.toggle('dark-mode');
 
-  <footer class="footer">
-    <div>© 2025 — Contoh Website. Dibuat dengan ❤️ oleh Jonathan.</div>
-  </footer>
+            // Mengubah teks tombol
+            if (document.body.classList.contains('dark-mode')) {
+                toggleButton.textContent = 'Mode Terang';
+            } else {
+                toggleButton.textContent = 'Mode Gelap';
+            }
+        });
 
-  <script>
-    // mobile menu toggle
-    const hamb = document.getElementById('hamb');
-    const mobileMenu = document.getElementById('mobileMenu');
-    hamb.addEventListener('click', ()=>{
-      const open = mobileMenu.style.display === 'block';
-      mobileMenu.style.display = open ? 'none' : 'block';
-      hamb.setAttribute('aria-expanded', String(!open));
-    });
+        /* --- 2. Skrip untuk Highlight Nav-link saat Scroll (Intersection Observer) --- */
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('nav ul li a');
 
-    // simple theme toggle (menukar background dan warna teks)
-    function toggleTheme(){
-      const dark = document.documentElement.style.getPropertyValue('--bg') === '#0b0720';
-      if(!dark){
-        document.documentElement.style.setProperty('--bg','#0b0720');
-        document.documentElement.style.setProperty('--card','#0b0822');
-        document.documentElement.style.setProperty('--muted','#c7c6d8');
-        document.body.style.color = '#eef2ff';
-      } else {
-        document.documentElement.style.setProperty('--bg','#f7f7fb');
-        document.documentElement.style.setProperty('--card','#ffffff');
-        document.documentElement.style.setProperty('--muted','#6b7280');
-        document.body.style.color = '#0f172a';
-      }
-    }
+        // Opsi untuk Intersection Observer
+        const observerOptions = {
+            root: null, // 'viewport'
+            rootMargin: '0px',
+            threshold: 0.6 // 60% dari section harus terlihat
+        };
 
-    // contact handler (demo: tampilkan ringkasan di console dan notifikasi)
-    function handleSubmit(e){
-      e.preventDefault();
-      const data = {
-        name: document.getElementById('name').value.trim(),
-        email: document.getElementById('email').value.trim(),
-        subject: document.getElementById('subject').value.trim(),
-        message: document.getElementById('message').value.trim(),
-        time: new Date().toISOString()
-      };
-      console.log('Form dikirim:', data);
-      alert('Terima kasih, ' + (data.name||'Pengguna') + '! Pesan telah dikirim (demo).');
-      document.getElementById('contactForm').reset();
-    }
-  </script>
+        // Callback function saat section masuk/keluar viewport
+        const observerCallback = (entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Dapatkan id dari section yang sedang terlihat
+                    const currentSectionId = entry.target.id;
+                    
+                    // Hapus kelas 'active' dari semua nav-link
+                    navLinks.forEach(link => {
+                        link.classList.remove('active');
+                    });
+
+                    // Tambahkan kelas 'active' ke nav-link yang sesuai
+                    // Cari link yang href-nya mengandung id section
+                    const activeLink = document.querySelector(`nav ul li a[href="#${currentSectionId}"]`);
+                    if (activeLink) {
+                        activeLink.classList.add('active');
+                    }
+                }
+            });
+        };
+
+        // Buat observer baru
+        const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+        // Amati setiap section
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+
+    </script>
 </body>
 </html>
