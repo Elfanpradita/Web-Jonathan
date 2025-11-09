@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Contoh Website — Jonathan</title>
+  <meta name="description" content="Contoh website HTML/CSS/JS responsif dengan navbar, hero, fitur, dan kontak." />
+  <style>
+    :root{
+      --accent:#120231; /* warna ungu gelap sesuai permintaan */
+      --accent-700:#0f0026;
+      --muted:#6b7280;
+      --card:#ffffff;
+      --bg:#f7f7fb;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;font-family:Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background:linear-gradient(180deg,#fbfbff 0%, var(--bg) 100%);
+      color:#0f172a;line-height:1.5;
+      -webkit-font-smoothing:antialiased;
+    }
+
+    /* NAVBAR */
+    .navbar{background:var(--accent);color:#fff;position:sticky;top:0;z-index:40;backdrop-filter:blur(6px);}
+    .nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:12px 18px;gap:12px}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:700}
+    .logo{width:36px;height:36px;background:linear-gradient(135deg,#6b21a8,#120231);border-radius:8px;display:inline-grid;place-items:center;color:#fff;font-weight:800}
+    .nav-links{display:flex;gap:14px;align-items:center}
+    .nav-links a{color:rgba(255,255,255,0.95);text-decoration:none;padding:8px 10px;border-radius:8px;font-weight:600}
+    .nav-links a:hover{background:rgba(255,255,255,0.06)}
+    .cta{background:#fff;color:var(--accent);padding:8px 12px;border-radius:8px;font-weight:700}
+
+    /* mobile menu */
+    .hamburger{display:none;background:transparent;border:0;color:#fff;font-size:22px}
+    @media (max-width:800px){
+      .nav-links{display:none}
+      .hamburger{display:inline-block}
+    }
+
+    /* HERO */
+    .hero{max-width:1100px;margin:36px auto;padding:28px 18px;display:grid;grid-template-columns:1fr 380px;gap:28px;align-items:center}
+    @media (max-width:980px){.hero{grid-template-columns:1fr}}
+    .hero-card{background:linear-gradient(180deg, rgba(255,255,255,0.85), rgba(255,255,255,0.95));padding:28px;border-radius:14px;box-shadow:0 8px 30px rgba(15,23,42,0.06)}
+    .hero h1{margin:0 0 12px;font-size:28px}
+    .hero p{margin:0 0 20px;color:var(--muted)}
+    .btn-row{display:flex;gap:12px}
+    .btn{padding:10px 14px;border-radius:10px;border:0;font-weight:700;cursor:pointer}
+    .btn-primary{background:var(--accent);color:#fff}
+    .btn-ghost{background:transparent;border:1px solid #e6e6ef}
+
+    /* FEATURES */
+    .features{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:22px}
+    @media (max-width:980px){.features{grid-template-columns:repeat(2,1fr)}}
+    @media (max-width:640px){.features{grid-template-columns:1fr}}
+    .feature{background:var(--card);padding:18px;border-radius:12px;box-shadow:0 6px 20px rgba(15,23,42,0.04)}
+    .feature h3{margin:6px 0 8px}
+    .feature p{margin:0;color:var(--muted);font-size:14px}
+
+    /* SIDEBAR CARD */
+    .side-card{background:linear-gradient(180deg,#fff,#fbfbff);padding:18px;border-radius:12px;box-shadow:0 10px 30px rgba(18,2,49,0.06)}
+    .side-card h4{margin:0 0 8px}
+    .meta{display:flex;flex-direction:column;gap:6px;font-size:14px;color:var(--muted)}
+
+    /* CONTACT */
+    .contact{max-width:1100px;margin:32px auto;padding:18px}
+    .contact-form{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    @media (max-width:800px){.contact-form{grid-template-columns:1fr}}
+    .input,textarea{width:100%;padding:10px;border-radius:8px;border:1px solid #e6e6ef}
+    textarea{min-height:120px;resize:vertical}
+    .footer{padding:28px 18px;text-align:center;color:var(--muted)}
+
+    /* small helpers */
+    .muted{color:var(--muted)}
+    .grid{display:grid}
+  </style>
+</head>
+<body>
+  <header class="navbar" role="banner">
+    <div class="nav-inner">
+      <div class="brand">
+        <div class="logo">J</div>
+        <div>
+          <div style="font-size:14px">Jonathan</div>
+          <div style="font-size:11px;color:rgba(255,255,255,0.8);margin-top:2px">Contoh Website</div>
+        </div>
+      </div>
+
+      <nav class="nav-links" aria-label="Menu utama">
+        <a href="#home">Beranda</a>
+        <a href="#fitur">Fitur</a>
+        <a href="#tentang">Tentang</a>
+        <a href="#kontak" class="cta">Kontak</a>
+      </nav>
+
+      <button class="hamburger" aria-expanded="false" aria-label="Buka menu" id="hamb">☰</button>
+    </div>
+
+    <!-- expandable mobile menu -->
+    <div id="mobileMenu" style="display:none;background:linear-gradient(180deg,var(--accent),var(--accent-700));padding:12px 18px;color:#fff">
+      <a href="#home" style="display:block;padding:8px 0;color:#fff;text-decoration:none">Beranda</a>
+      <a href="#fitur" style="display:block;padding:8px 0;color:#fff;text-decoration:none">Fitur</a>
+      <a href="#tentang" style="display:block;padding:8px 0;color:#fff;text-decoration:none">Tentang</a>
+      <a href="#kontak" style="display:block;padding:8px 0;color:#fff;text-decoration:none">Kontak</a>
+    </div>
+  </header>
+
+  <main>
+    <section id="home" class="hero">
+      <div class="hero-card">
+        <h1>Website sederhana, modern, dan responsif</h1>
+        <p>Contoh template satu file (HTML/CSS/JS). Cocok untuk portofolio, landing page produk, atau proyek demonstrasi singkat.</p>
+        <div class="btn-row">
+          <button class="btn btn-primary" onclick="document.getElementById('kontak').scrollIntoView({behavior:'smooth'})">Hubungi Kami</button>
+          <button class="btn btn-ghost" onclick="toggleTheme()">Toggle Tema</button>
+        </div>
+
+        <section id="fitur" style="margin-top:20px">
+          <div class="features">
+            <div class="feature">
+              <strong>Responsif</strong>
+              <h3>Berfungsi di semua perangkat</h3>
+              <p class="muted">Layout fleksibel yang menyesuaikan dengan layar mobile dan desktop.</p>
+            </div>
+            <div class="feature">
+              <strong>Ringan</strong>
+              <h3>Kecepatan dan performa</h3>
+              <p class="muted">Hanya HTML/CSS/JS minimal sehingga cepat dimuat.</p>
+            </div>
+            <div class="feature">
+              <strong>Mudah dikustom</strong>
+              <h3>Ganti teks, warna, dan gambar</h3>
+              <p class="muted">Struktur kode yang jelas agar mudah dimodifikasi.</p>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <aside class="side-card">
+        <h4>Ringkasan</h4>
+        <div class="meta">
+          <div><strong>Stack:</strong> HTML • CSS • JavaScript</div>
+          <div><strong>Warna utama:</strong> <code>#120231</code></div>
+          <div><strong>Layout:</strong> Responsif</div>
+        </div>
+        <div style="margin-top:12px">
+          <small class="muted">Gunakan tombol "Toggle Tema" untuk demo mode gelap/terang sederhana.</small>
+        </div>
+      </aside>
+    </section>
+
+    <section id="tentang" style="max-width:1100px;margin:10px auto;padding:18px">
+      <div style="background:var(--card);padding:18px;border-radius:12px;box-shadow:0 8px 30px rgba(15,23,42,0.04)">
+        <h2>Tentang Project</h2>
+        <p class="muted">Ini adalah contoh website satu file yang bisa kamu ambil, edit, dan deploy di GitHub Pages atau server manapun. Semua kode berada di satu file untuk kemudahan pembelajaran.</p>
+      </div>
+    </section>
+
+    <section id="kontak" class="contact">
+      <div style="max-width:1100px;margin:0 auto;">
+        <h2>Kontak</h2>
+        <form id="contactForm" onsubmit="handleSubmit(event)">
+          <div class="contact-form">
+            <input class="input" type="text" id="name" placeholder="Nama" required />
+            <input class="input" type="email" id="email" placeholder="Email" required />
+            <input class="input" type="text" id="subject" placeholder="Subjek" />
+            <textarea id="message" placeholder="Pesan" required></textarea>
+          </div>
+          <div style="margin-top:12px">
+            <button type="submit" class="btn btn-primary">Kirim Pesan</button>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div>© 2025 — Contoh Website. Dibuat dengan ❤️ oleh Jonathan.</div>
+  </footer>
+
+  <script>
+    // mobile menu toggle
+    const hamb = document.getElementById('hamb');
+    const mobileMenu = document.getElementById('mobileMenu');
+    hamb.addEventListener('click', ()=>{
+      const open = mobileMenu.style.display === 'block';
+      mobileMenu.style.display = open ? 'none' : 'block';
+      hamb.setAttribute('aria-expanded', String(!open));
+    });
+
+    // simple theme toggle (menukar background dan warna teks)
+    function toggleTheme(){
+      const dark = document.documentElement.style.getPropertyValue('--bg') === '#0b0720';
+      if(!dark){
+        document.documentElement.style.setProperty('--bg','#0b0720');
+        document.documentElement.style.setProperty('--card','#0b0822');
+        document.documentElement.style.setProperty('--muted','#c7c6d8');
+        document.body.style.color = '#eef2ff';
+      } else {
+        document.documentElement.style.setProperty('--bg','#f7f7fb');
+        document.documentElement.style.setProperty('--card','#ffffff');
+        document.documentElement.style.setProperty('--muted','#6b7280');
+        document.body.style.color = '#0f172a';
+      }
+    }
+
+    // contact handler (demo: tampilkan ringkasan di console dan notifikasi)
+    function handleSubmit(e){
+      e.preventDefault();
+      const data = {
+        name: document.getElementById('name').value.trim(),
+        email: document.getElementById('email').value.trim(),
+        subject: document.getElementById('subject').value.trim(),
+        message: document.getElementById('message').value.trim(),
+        time: new Date().toISOString()
+      };
+      console.log('Form dikirim:', data);
+      alert('Terima kasih, ' + (data.name||'Pengguna') + '! Pesan telah dikirim (demo).');
+      document.getElementById('contactForm').reset();
+    }
+  </script>
+</body>
+</html>
