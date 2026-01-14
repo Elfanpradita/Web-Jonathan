@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verifikasi Sertifikat - Jonathan Chandra</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <style>
+        :root {
+            --bg-color: #f4f7f6;
+            --text-color: #333;
+            --primary-color: #007bff;
+            --card-bg: #ffffff;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        body {
+            font-family: -apple-system, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .verif-container {
+            background: var(--card-bg);
+            max-width: 800px;
+            width: 100%;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+
+        .cert-img {
+            width: 100%;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            margin-bottom: 1.5rem;
+        }
+
+        h1 { color: var(--primary-color); margin-bottom: 0.5rem; }
+        p { line-height: 1.6; color: #666; }
+
+        .btn-group {
+            margin-top: 2rem;
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .btn {
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn-primary { background: var(--primary-color); color: white; }
+        .btn-secondary { background: #6c757d; color: white; }
+        .btn:hover { opacity: 0.8; transform: translateY(-2px); }
+    </style>
+</head>
+<body>
+
+    <div class="verif-container">
+        <h1>Verifikasi Sertifikat</h1>
+        <p><strong>Machine Learning with Python</strong></p>
+        
+        <img src="Sertifikat Machine Learning.png" alt="Sertifikat Jonathan Chandra" class="cert-img">
+
+        <div style="text-align: left; margin: 1rem 0;">
+            <p><strong>Deskripsi Singkat:</strong></p>
+            <p>Sertifikat ini diberikan kepada <b>Jonathan Chandra</b> oleh <b>freeCodeCamp</b> setelah menyelesaikan kurikulum intensif selama kurang lebih 300 jam. Program ini mencakup pemrosesan data, pembuatan model regresi, klasifikasi, hingga penggunaan Neural Networks dengan TensorFlow.</p>
+        </div>
+
+        <div class="btn-group">
+            <a href="index.html" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Kembali</a>
+            <a href="https://freecodecamp.org/certification/DESTRUCTION943/machine-learning-with-python-v7" target="_blank" class="btn btn-primary"><i class="fas fa-check-circle"></i> Verifikasi di freeCodeCamp</a>
+        </div>
+    </div>
+
+</body>
+</html>
