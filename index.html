@@ -5,12 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portofolio Jonathan Chandra</title>
     
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
 
     <style>
         /* --- 1. Pengaturan Global & Variabel Warna --- */
         :root {
-            /* Mode Terang (Light Mode) */
             --bg-color: #f4f7f6;
             --text-color: #333;
             --primary-color: #007bff;
@@ -19,14 +18,11 @@
             --nav-bg: rgba(255, 255, 255, 0.7);
             --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
             --border-color: #eee;
-            
-            /* [BARU] Warna untuk tombol link (dibalik) */
-            --link-btn-bg: var(--text-color);
-            --link-btn-text: var(--bg-color);
+            --link-btn-bg: #333;
+            --link-btn-text: #f4f7f6;
         }
 
         body.dark-mode {
-            /* Mode Gelap (Dark Mode) */
             --bg-color: #121212;
             --text-color: #f4f7f6;
             --primary-color: #4dabf7;
@@ -35,35 +31,21 @@
             --nav-bg: rgba(30, 30, 30, 0.7);
             --shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
             --border-color: #333;
-
-            /* [BARU] Warna untuk tombol link (dibalik) */
-            --link-btn-bg: var(--text-color);
-            --link-btn-text: var(--bg-color);
+            --link-btn-bg: #f4f7f6;
+            --link-btn-text: #121212;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
             background-color: var(--bg-color);
             color: var(--text-color);
             line-height: 1.6;
             transition: background-color 0.3s, color 0.3s;
         }
 
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
 
         section {
             padding: 5rem 0;
@@ -74,126 +56,32 @@
             justify-content: center;
         }
 
-        h1, h2, h3 {
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-        }
-
+        h1, h2, h3 { color: var(--primary-color); margin-bottom: 1rem; }
         h1 { font-size: 3rem; }
         h2 { font-size: 2.2rem; }
-        p { 
-            font-size: 1.1rem;
-            color: var(--secondary-color);
-            margin-bottom: 1rem;
-        }
 
-        /* --- 2. Header & Navigasi (Glassmorphism) --- */
+        /* --- 2. Header & Navigasi --- */
         header {
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            background: var(--nav-bg);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
+            position: fixed; width: 100%; top: 0; z-index: 1000;
+            background: var(--nav-bg); backdrop-filter: blur(10px);
             border-bottom: 1px solid var(--border-color);
-            transition: background 0.3s, border-color 0.3s;
         }
-
         nav .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            height: 60px;
+            display: flex; justify-content: space-between; align-items: center; height: 60px;
         }
+        nav .logo { font-size: 1.5rem; font-weight: bold; color: var(--primary-color); text-decoration: none; }
+        nav ul { display: flex; list-style: none; }
+        nav ul li { margin-left: 1.5rem; }
+        nav ul li a { text-decoration: none; color: var(--text-color); font-weight: 500; transition: 0.3s; }
+        nav ul li a.active, nav ul li a:hover { color: var(--primary-color); }
 
-        nav .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: var(--primary-color);
-            text-decoration: none;
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-        }
-
-        nav ul li {
-            margin-left: 1.5rem;
-        }
-
-        nav ul li a {
-            text-decoration: none;
-            color: var(--text-color);
-            font-weight: 500;
-            padding: 5px 0;
-            border-bottom: 2px solid transparent;
-            transition: color 0.3s, border-bottom 0.3s;
-        }
-
-        nav ul li a.active,
-        nav ul li a:hover {
-            color: var(--primary-color);
-            border-bottom: 2px solid var(--primary-color);
-        }
-
-        /* --- 3. Tombol Dark Mode --- */
         #dark-mode-toggle {
-            background: var(--secondary-color);
-            color: var(--bg-color);
-            border: none;
-            padding: 0.5rem 0.7rem;
-            border-radius: 50px;
-            cursor: pointer;
-            font-size: 0.9rem;
-            transition: background 0.3s;
+            background: var(--secondary-color); color: var(--bg-color);
+            border: none; padding: 0.5rem 0.7rem; border-radius: 50px; cursor: pointer;
         }
 
-        #dark-mode-toggle:hover {
-            opacity: 0.8;
-        }
-
-        /* --- 4. Section: Hero (Home) --- */
-        #home {
-            text-align: center;
-        }
-        
-        #home .cta-button {
-            display: inline-block;
-            background: var(--primary-color);
-            color: #fff;
-            padding: 1rem 2rem;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: bold;
-            margin-top: 1rem;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        #home .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 15px rgba(0, 123, 255, 0.3);
-        }
-
-        /* --- 5. Section: About --- */
-        #about .about-content {
-            display: flex;
-            align-items: center;
-            gap: 2rem;
-        }
-
-        #about img {
-            width: 250px;
-            height: 250px;
-            object-fit: cover;
-            border-radius: 50%;
-            border: 5px solid var(--primary-color);
-            box-shadow: var(--shadow);
-        }
-
-        /* --- 6. Section: Projects (Grid) --- */
-        #projects .project-grid {
+        /* --- 3. Grid & Cards --- */
+        .project-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
@@ -202,133 +90,57 @@
         .project-card {
             background: var(--card-bg);
             border: 1px solid var(--border-color);
-            border-radius: 10px;
+            border-radius: 12px;
             box-shadow: var(--shadow);
             overflow: hidden;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .project-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
-        }
-
-        .project-card img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
-
-        .project-card-content {
-            padding: 1.5rem;
-        }
-        
-        .project-card h3 {
-            margin-bottom: 0.5rem;
-        }
-
-        .project-card a {
-            color: var(--primary-color);
-            text-decoration: none;
-            font-weight: 500;
-        }
-
-        /* === [BAGIAN CSS DIUBAH] === */
-        /* --- 7. Section: Contact (Link List) --- */
-        #contact .container {
-            /* [BARU] Pusatkan semua konten di section kontak */
-            max-width: 700px;
-            text-align: center;
-        }
-
-        .link-list {
-            margin-top: 2rem;
             display: flex;
             flex-direction: column;
-            gap: 1.25rem; /* Jarak antar tombol */
+            transition: transform 0.3s;
+        }
+        .project-card:hover { transform: translateY(-10px); }
+
+        .project-card-content { padding: 1.5rem; flex-grow: 1; display: flex; flex-direction: column; }
+
+        /* --- 4. CSS Khusus Sertifikat (PDF + Image) --- */
+        .pdf-preview-box {
+            width: 100%;
+            height: 200px;
+            background: #eee;
+            border-bottom: 1px solid var(--border-color);
         }
 
-        .link-button {
+        .certificate-img-container {
+            width: 100%;
+            height: 150px;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 1rem 1.5rem;
-            text-decoration: none;
-            
-            /* [BARU] Style tombol seperti gambar (warna terbalik) */
-            background-color: var(--link-btn-bg); 
-            color: var(--link-btn-text); 
-            
-            border: 2px solid var(--link-btn-bg);
-            border-radius: 50px; /* Sangat bulat */
-            font-size: 1.1rem;
-            font-weight: 500;
-            box-shadow: var(--shadow);
-            transition: transform 0.2s, background-color 0.3s, color 0.3s, border-color 0.3s;
+            background: #f9f9f9;
+            margin-bottom: 1rem;
+            border-radius: 8px;
+            padding: 5px;
         }
+        .certificate-img-container img { max-width: 100%; max-height: 100%; object-fit: contain; }
 
-        .link-button:hover {
-            transform: scale(1.03); /* Sedikit membesar saat hover */
-            
-            /* [BARU] Saat hover, gunakan warna primer */
-            background-color: var(--primary-color);
-            border-color: var(--primary-color);
-            color: #fff; 
+        /* --- 5. Contact Buttons --- */
+        .link-list { margin-top: 2rem; display: flex; flex-direction: column; gap: 1rem; }
+        .link-button {
+            display: flex; align-items: center; justify-content: center;
+            padding: 0.8rem 1.5rem; text-decoration: none;
+            background-color: var(--link-btn-bg); color: var(--link-btn-text);
+            border-radius: 50px; font-weight: 500; transition: 0.3s;
         }
+        .link-button:hover { background-color: var(--primary-color); color: white; transform: scale(1.02); }
+        .link-button i { margin-right: 10px; width: 20px; text-align: center; }
 
-        .link-button i {
-            margin-right: 1rem; /* Jarak antara ikon dan teks */
-            font-size: 1.3rem; /* Ukuran ikon */
-            width: 25px; /* Memberi 'ruang' tetap untuk ikon */
-            text-align: center;
-        }
-        /* === [AKHIR BAGIAN CSS DIUBAH] === */
+        footer { text-align: center; padding: 2rem 0; background: var(--card-bg); border-top: 1px solid var(--border-color); }
 
-
-        /* --- 8. Footer --- */
-        footer {
-            text-align: center;
-            padding: 2rem 0;
-            background: var(--card-bg);
-            border-top: 1px solid var(--border-color);
-            margin-top: -1px; 
-        }
-        
-        /* --- 9. Responsif (Mobile) --- */
+        /* Responsif */
         @media (max-width: 768px) {
-            h1 { font-size: 2.5rem; }
-            h2 { font-size: 1.8rem; }
-            
-            nav .container {
-                flex-direction: column;
-                height: auto;
-                padding: 1rem;
-            }
-            
-            nav ul {
-                margin-top: 1rem;
-                justify-content: center;
-                flex-wrap: wrap;
-            }
-            
-            nav ul li {
-                margin: 0.5rem;
-            }
-            
-            #dark-mode-toggle {
-                margin-top: 1rem;
-            }
-
-            section {
-                padding: 4rem 0;
-            }
-            
-            #about .about-content {
-                flex-direction: column;
-                text-align: center;
-            }
+            nav .container { flex-direction: column; height: auto; padding: 10px; }
+            nav ul { margin-top: 10px; }
+            #about .about-content { flex-direction: column; text-align: center; }
         }
-
     </style>
 </head>
 <body>
@@ -351,21 +163,20 @@
 
     <main>
         <section id="home">
-            <div class="container">
-                <h1>Selamat Datang di Portofolio Saya</h1>
-                <p>Saya Jonathan Chandra, seorang Data Science yang bersemangat.</p>
-                <a href="#projects" class="cta-button">Lihat Karya Saya</a>
+            <div class="container" style="text-align: center;">
+                <h1>Selamat Datang</h1>
+                <p>Saya Jonathan Chandra, seorang Data Scientist yang bersemangat.</p>
+                <a href="#projects" class="link-button" style="display:inline-flex; width: auto; background: var(--primary-color); color: white;">Lihat Karya Saya</a>
             </div>
         </section>
 
         <section id="about">
             <div class="container">
                 <h2>Tentang Saya</h2>
-                <div class="about-content">
-                    <img src="Foto_Profil.jpg" alt="Foto Profil Anda">
+                <div class="about-content" style="display: flex; align-items: center; gap: 2rem;">
+                    <img src="Foto_Profil.jpg" alt="Foto Profil" style="width: 200px; height: 200px; border-radius: 50%; border: 4px solid var(--primary-color);">
                     <div>
-                        <p>Halo! Saya adalah seorang profesional yang berdedikasi dengan pengalaman di bidang Data Science. Saya memiliki keahlian dalam Analisis Data, Pemograman, dan Machine Learning.</p>
-                        <p>Saya selalu antusias untuk mempelajari hal-hal baru dan berkolaborasi dalam proyek-proyek yang menantang dan berdampak positif.</p>
+                        <p>Halo! Saya adalah profesional di bidang Data Science dengan keahlian Analisis Data dan Machine Learning.</p>
                     </div>
                 </div>
             </div>
@@ -376,188 +187,97 @@
                 <h2>Projek Saya</h2>
                 <div class="project-grid">
                     <div class="project-card">
-                        <img src="https://via.placeholder.com/400x200" alt="Gambar Projek 1">
+                        <img src="https://via.placeholder.com/400x200" alt="Projek 1">
                         <div class="project-card-content">
-                            <h3>Nama Projek 1</h3>
-                            <p>Deskripsi singkat tentang projek ini, teknologi yang digunakan, dan apa tujuannya.</p>
-                            <a href="#" target="_blank">Lihat Deskripsi</a> | 
-                            <a href="#" target="_blank">Lihat Kode</a>
-                        </div>
-                    </div>
-                    <div class="project-card">
-                        <img src="https://via.placeholder.com/400x200" alt="Gambar Projek 2">
-                        <div class="project-card-content">
-                            <h3>Nama Projek 2</h3>
-                            <p>Deskripsi singkat tentang projek ini, teknologi yang digunakan, dan apa tujuannya.</p>
-                            <a href="#" target="_blank">Lihat Deskripsi</a> | 
-                            <a href="#" target="_blank">Lihat Kode</a>
-                        </div>
-                    </div>
-                    <div class="project-card">
-                        <img src="https://via.placeholder.com/400x200" alt="Gambar Projek 3">
-                        <div class="project-card-content">
-                            <h3>Nama Projek 3</h3>
-                            <p>Deskripsi singkat tentang projek ini, teknologi yang digunakan, dan apa tujuannya.</p>
-                            <a href="#" target="_blank">Lihat Deskripsi</a> | 
-                            <a href="#" target="_blank">Lihat Kode</a>
+                            <h3>Analisis Prediktif</h3>
+                            <p>Menggunakan Python untuk memprediksi tren pasar.</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-<section id="certificates">
-    <div class="container">
-        <h2>Sertifikat & Pencapaian</h2>
-        <div class="project-grid">
-            
-            <div class="project-card">
-                <div class="project-card-content">
-                    <div class="certificate-img-container">
-                        <img src="Sertifikat_Machine_Learning.png" alt="Sertifikat Machine Learning">
-                    </div>
-                    <h3>Machine Learning with Python</h3>
-                    <p>Diterbitkan oleh: <strong>freeCodeCamp</strong></p>
+        <section id="certificates">
+            <div class="container">
+                <h2>Sertifikat & Pencapaian</h2>
+                <div class="project-grid">
                     
-                    <a href="ml.html" class="link-button" style="background-color: var(--primary-color); color: white; border: none; margin-top: 10px; width: 100%; justify-content: center;">
-                        <i class="fas fa-search-plus"></i> Lihat Detail Verifikasi
-                    </a>
-                </div>
-            </div>
-
-            <div class="project-card">
-                <div class="pdf-preview-box">
-                    <embed src="sertifikat_2.pdf" type="application/pdf" width="100%" height="100%">
-                </div>
-                <div class="project-card-content">
-                    <div class="certificate-img-container">
-                        <img src="Sertifikat_Machine_Learning.png" alt="Sertifikat Data Science">
+                    <div class="project-card">
+                        <div class="pdf-preview-box">
+                            <embed src="sertifikat_1.pdf" type="application/pdf" width="100%" height="100%">
+                        </div>
+                        <div class="project-card-content">
+                            <div class="certificate-img-container">
+                                <img src="Sertifikat_Machine_Learning.png" alt="Sertifikat ML">
+                            </div>
+                            <h3>Machine Learning with Python</h3>
+                            <p>Diterbitkan oleh: <strong>freeCodeCamp</strong></p>
+                            <a href="ml.html" class="link-button" style="background-color: var(--primary-color); color: white; margin-top: auto;">
+                                <i class="fas fa-search-plus"></i> Detail Verifikasi
+                            </a>
+                        </div>
                     </div>
-                    <h3>Data Science Professional</h3>
-                    <p>Diterbitkan oleh: <strong>Google / Coursera</strong></p>
-                    
-                    <a href="ml.html" class="link-button" style="background-color: var(--primary-color); color: white; border: none; margin-top: 10px; width: 100%; justify-content: center;">
-                        <i class="fas fa-search-plus"></i> Lihat Detail Verifikasi
-                    </a>
-                </div>
-            </div>
 
-            <div class="project-card">
-                <div class="pdf-preview-box">
-                    <embed src="sertifikat_3.pdf" type="application/pdf" width="100%" height="100%">
-                </div>
-                <div class="project-card-content">
-                    <div class="certificate-img-container">
-                        <img src="Sertifikat_Machine_Learning.png" alt="Transkrip">
+                    <div class="project-card">
+                        <div class="pdf-preview-box">
+                            <embed src="Data_Classification_and_Summarization_Using_IBM_Granite_Credly.pdf" type="application/pdf" width="100%" height="100%">
+                        </div>
+                        <div class="project-card-content">
+                            <div class="certificate-img-container">
+                                <img src="Sertifikat_Machine_Learning.png" alt="Sertifikat Data Science">
+                            </div>
+                            <h3>Data Science Professional</h3>
+                            <p>Diterbitkan oleh: <strong>IBM / Coursera</strong></p>
+                            <a href="#" class="link-button" style="background-color: var(--primary-color); color: white; margin-top: auto;">
+                                <i class="fas fa-search-plus"></i> Detail Verifikasi
+                            </a>
+                        </div>
                     </div>
-                    <h3>Transkrip Akademik</h3>
-                    <p>Dokumen resmi pencapaian akademik.</p>
-                    
-                    <a href="ml.html" class="link-button" style="background-color: var(--primary-color); color: white; border: none; margin-top: 10px; width: 100%; justify-content: center;">
-                        <i class="fas fa-search-plus"></i> Lihat Detail Verifikasi
-                    </a>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</section>
-
-                </div>
-            </div>
 
                 </div>
             </div>
         </section>
 
         <section id="contact">
-            <div class="container">
+            <div class="container" style="text-align: center; max-width: 600px;">
                 <h2>Hubungi Saya</h2>
-                <p>Temukan saya di platform lain di bawah ini. Mari terhubung!</p>
-                
                 <div class="link-list">
-                    
-                    <a href="#" target="_blank" class="link-button">
-                        <i class="fab fa-instagram"></i> Instagram
-                    </a>
-                    
-                    <a href="#" target="_blank" class="link-button">
-                        <i class="fab fa-tiktok"></i> TikTok
-                    </a>
-                    
-                    <a href="#" target="_blank" class="link-button">
-                        <i class="fab fa-youtube"></i> YouTube
-                    </a>
-
-                    <a href="#" target="_blank" class="link-button">
-                        <i class="fab fa-linkedin-in"></i> LinkedIn
-                    </a>
-                    
-                    <a href="#" target="_blank" class="link-button">
-                        <i class="fab fa-github"></i> GitHub
-                    </a>
-                    
-                    <a href="#" target="_blank" class="link-button">
-                        <i class="fas fa-globe"></i> Web Pribadi
-                    </a>
-                    
-                    <a href="mailto:emailanda@gmail.com" class="link-button">
-                        <i class="fas fa-envelope"></i> Email Saya
-                    </a>
-
+                    <a href="#" target="_blank" class="link-button"><i class="fab fa-linkedin-in"></i> LinkedIn</a>
+                    <a href="#" target="_blank" class="link-button"><i class="fab fa-github"></i> GitHub</a>
+                    <a href="mailto:emailanda@gmail.com" class="link-button"><i class="fas fa-envelope"></i> Email</a>
                 </div>
             </div>
         </section>
-        </main>
+    </main>
 
     <footer>
         <div class="container">
-            <p>&copy; 2025 Jonathan Chandra. Dibuat dengan ❤️.</p>
+            <p>&copy; 2026 Jonathan Chandra.</p>
         </div>
     </footer>
 
     <script>
-        /* --- 1. Skrip untuk Dark Mode Toggle --- */
+        // Dark Mode Toggle
         const toggleButton = document.getElementById('dark-mode-toggle');
-
         toggleButton.addEventListener('click', () => {
             document.body.classList.toggle('dark-mode');
-            if (document.body.classList.contains('dark-mode')) {
-                toggleButton.textContent = 'Mode Terang';
-            } else {
-                toggleButton.textContent = 'Mode Gelap';
-            }
+            toggleButton.textContent = document.body.classList.contains('dark-mode') ? 'Mode Terang' : 'Mode Gelap';
         });
 
-        /* --- 2. Skrip untuk Highlight Nav-link saat Scroll (Intersection Observer) --- */
+        // Navigation Highlight on Scroll
         const sections = document.querySelectorAll('section');
-        const navLinks = document.querySelectorAll('nav ul li a');
-        const observerOptions = {
-            root: null, 
-            rootMargin: '0px',
-            threshold: 0.6 
-        };
-
-        const observerCallback = (entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const currentSectionId = entry.target.id;
-                    navLinks.forEach(link => {
-                        link.classList.remove('active');
-                    });
-                    const activeLink = document.querySelector(`nav ul li a[href="#${currentSectionId}"]`);
-                    if (activeLink) {
-                        activeLink.classList.add('active');
-                    }
-                }
+        const navLinks = document.querySelectorAll('.nav-link');
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= sectionTop - 100) { current = section.getAttribute('id'); }
             });
-        };
-
-        const observer = new IntersectionObserver(observerCallback, observerOptions);
-        sections.forEach(section => {
-            observer.observe(section);
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').includes(current)) { link.classList.add('active'); }
+            });
         });
-
     </script>
 </body>
 </html>
