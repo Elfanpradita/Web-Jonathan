@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verifikasi Sertifikat - Jonathan Chandra</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <style>
+        :root {
+            --bg-color: #f4f7f6;
+            --text-color: #333;
+            --primary-color: #007bff;
+            --card-bg: #ffffff;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        body {
+            font-family: -apple-system, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .verif-container {
+            background: var(--card-bg);
+            max-width: 800px;
+            width: 100%;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+
+        /* Styling untuk container PDF */
+        .pdf-viewer {
+            width: 100%;
+            height: 500px; /* Atur tinggi tampilan PDF */
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            margin-bottom: 1.5rem;
+            overflow: hidden;
+        }
+
+        .pdf-frame {
+            width: 100%;
+            height: 100%;
+        }
+
+        h1 { color: var(--primary-color); margin-bottom: 0.5rem; }
+        p { line-height: 1.6; color: #666; }
+
+        .btn-group {
+            margin-top: 2rem;
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .btn {
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.9rem;
+            transition: 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary { background: var(--primary-color); color: white; }
+        .btn-secondary { background: #6c757d; color: white; }
+        .btn:hover { opacity: 0.8; transform: translateY(-2px); }
+    </style>
+</head>
+<body>
+
+    <div class="verif-container">
+        <h1>Verifikasi Sertifikat</h1>
+        <p><strong>Data Science Explorers 2025</strong></p>
+        
+        <div class="pdf-viewer">
+            <embed src="Data_Science_Certificate.pdf" type="application/pdf" class="pdf-frame">
+        </div>
+
+        <div style="text-align: left; margin: 1rem 0;">
+            <p><strong>Deskripsi Singkat:</strong></p>
+            <p>Sertifikat partisipasi ini diberikan kepada <b>saya</b> atas keikutsertaan dalam sesi <i>ASEAN Data Science Explorers 2025 Enablement Session</i>[cite: 52, 53, 57]. Program ini merupakan sesi pelatihan menggunakan <b>SAP Analytics Cloud</b>[cite: 57]. Melalui sesi ini, saya mempelajari cara menganalisis data untuk menciptakan solusi bagi tantangan regional[cite: 57].</p>
+        </div>
+
+        <div class="btn-group">
+            <a href="index.html" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Kembali</a>
+            <a href="#" class="btn btn-primary"><i class="fas fa-check-circle"></i> Verifikasi Kredensial</a>
+        </div>
+    </div>
+
+</body>
+</html>
