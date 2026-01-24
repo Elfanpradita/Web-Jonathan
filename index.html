@@ -199,6 +199,45 @@
             gap: 2rem;
         }
 
+        .slider-container {
+            position: relative;
+            overflow: hidden; /* Menyembunyikan gambar lain */
+            width: 100%;
+            height: 200px; /* Sesuaikan tinggi gambar */
+        }
+
+        .slider-wrapper {
+            display: flex;
+            transition: transform 0.5s ease-in-out; /* Efek geser halus */
+        }
+
+        .slide {
+            min-width: 100%;
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+
+        /* Gaya Tombol */
+        .prev-btn, .next-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        .prev-btn { left: 10px; }
+        .next-btn { right: 10px; }
+
+        .prev-btn:hover, .next-btn:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
         .project-card {
             background: var(--card-bg);
             border: 1px solid var(--border-color);
@@ -376,14 +415,23 @@
         <h2>Projek & Pengalaman Saya</h2>
         <div class="project-grid">
             
-            <div class="project-card">
-                <img src="gambarbq.png" alt="Klasifikasi Data IBM">
-                <div class="project-card-content">
-                    <h3>Project Big Data</h3>
-                    <p>Proyek ini bertujuan untuk mengatasi tantangan pengelolaan inventaris obat di Safe Medicare dengan menerapkan kerangka kerja analitik prediktif berbasis BigQuery Machine Learning (BQML).</p>
-                    <a href="bqml.html" target="_blank">Lihat Kredensial</a>
+        <div class="project-card">
+            <div class="slider-container">
+                <div class="slider-wrapper">
+                    <img src="gambarbq.png" alt="Klasifikasi Data IBM" class="slide">
+                    <img src="gambarbq1.png" alt="Analisis Data" class="slide">
+                    <img src="gambarbq2.png" alt="Visualisasi Data" class="slide">
                 </div>
+                <button class="prev-btn" onclick="moveSlide(-1, this)">&#10094;</button>
+                <button class="next-btn" onclick="moveSlide(1, this)">&#10095;</button>
             </div>
+
+            <div class="project-card-content">
+                <h3>Project Big Data</h3>
+                <p>Proyek ini bertujuan untuk mengatasi tantangan pengelolaan inventaris obat di Safe Medicare dengan menerapkan kerangka kerja analitik prediktif berbasis BigQuery Machine Learning (BQML).</p>
+                <a href="bqml.html" target="_blank">Lihat Kredensial</a>
+            </div>
+        </div>
 
             <div class="project-card">
                 <img src="https://via.placeholder.com/400x200" alt="Peringkasan Data AI">
