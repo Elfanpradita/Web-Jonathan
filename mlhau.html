@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Journal Summary - Jonathan Chandra</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <style>
+        :root {
+            --bg-color: #f4f7f6;
+            --text-color: #333;
+            --primary-color: #27ae60; /* Warna hijau untuk tema konservasi/alam */
+            --card-bg: #ffffff;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --border-color: #ddd;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            margin: 0;
+            padding: 40px 20px;
+        }
+
+        .verif-container {
+            background: var(--card-bg);
+            max-width: 800px;
+            width: 100%;
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+
+        .pdf-viewer {
+            width: 100%;
+            height: 500px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            margin-bottom: 2rem;
+            background-color: #f9f9f9;
+        }
+
+        .pdf-frame {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        h1 { color: var(--primary-color); margin-bottom: 0.5rem; font-size: 1.8rem; }
+        .subtitle { color: #666; font-style: italic; margin-bottom: 2rem; line-height: 1.4; }
+
+        .journal-content {
+            text-align: left;
+            line-height: 1.8;
+            color: #444;
+        }
+
+        .journal-content h3 {
+            color: var(--primary-color);
+            border-bottom: 2px solid #eee;
+            padding-bottom: 5px;
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .journal-content ul {
+            padding-left: 20px;
+            margin-bottom: 1rem;
+        }
+
+        .btn-group {
+            margin-top: 3rem;
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            border-top: 1px solid #eee;
+            padding-top: 1.5rem;
+        }
+
+        .btn {
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.9rem;
+            transition: 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary { background: var(--primary-color); color: white; }
+        .btn-secondary { background: #6c757d; color: white; }
+        .btn-outline { background: transparent; border: 2px solid var(--primary-color); color: var(--primary-color); }
+        
+        .btn:hover { opacity: 0.8; transform: translateY(-2px); }
+
+        @media (max-width: 768px) {
+            .verif-container { padding: 1.5rem; }
+            .pdf-viewer { height: 300px; }
+            .btn-group { flex-direction: column; }
+            .btn { width: 100%; justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="verif-container">
+        <h1>Bioacoustic Monitoring & Machine Learning</h1>
+        <p class="subtitle">Research: "Identifikasi Spesies Burung Berdasarkan Data Akustik untuk Monitoring Keanekaragaman Hayati di El Silencio, Kolombia"</p>
+        
+        <div class="pdf-viewer">
+            <embed src="_IS411_Week11_Group_08_Even-2024-2025 (2).pdf" type="application/pdf" class="pdf-frame">
+        </div>
+
+        <div class="journal-content">
+            <p><strong>Abstrak:</strong> Dalam penelitian ini, <b>saya</b> mengeksplorasi penggunaan teknologi <i>passive acoustic monitoring</i> (PAM) dan <i>machine learning</i> untuk mengidentifikasi spesies burung di kawasan tropis. Studi ini berfokus pada data suara dari El Silencio Natural Reserve, sebuah wilayah krusial bagi konservasi yang terancam oleh deforestasi.</p>
+
+            <h3>1. Latar Belakang</h3>
+            <p>Restorasi ekologi memerlukan pemantauan biodiversitas yang akurat untuk mengukur keberhasilan konservasi. Metode konvensional sangat mahal dan kompleks secara logistik. Oleh karena itu, <b>saya</b> berfokus pada pengembangan model klasifikasi audio yang efisien untuk memantau spesies burung secara berkelanjutan di kawasan Tropis yang rentan.</p>
+
+            <h3>2. Pengumpulan & Pengolahan Data</h3>
+            <p>Data yang <b>saya</b> gunakan berasal dari kompetisi BirdCLEF 2025, yang mencakup:</p>
+            <ul>
+                <li><b>Dataset Akustik:</b> Kumpulan rekaman pendek suara individu burung dan amfibi.</li>
+                <li><b>Analisis Statistik (EDA):</b> Saya menganalisis 20 spesies teratas berdasarkan jumlah sampel, seperti <i>Great Kiskadee</i> dan <i>Common Pauraque</i>.</li>
+                <li><b>Feature Engineering:</b> Proses ekstraksi fitur dari sinyal suara untuk membedakan karakteristik taksonomi setiap spesies.</li>
+            </ul>
+
+            <h3>3. Tantangan & Metodologi</h3>
+            <p>Penelitian ini menghadapi tantangan berupa sedikitnya data berlabel. Strategi yang <b>saya</b> terapkan meliputi:</p>
+            <ul>
+                <li><b>Eksplorasi Data Tak Berlabel:</b> Memanfaatkan data audio tambahan untuk memperkuat pemahaman model.</li>
+                <li><b>Model Klasifikasi:</b> Mengembangkan arsitektur <i>Machine Learning</i> yang mampu mengenali pola unik frekuensi suara burung di lingkungan hutan yang bising.</li>
+            </ul>
+
+            <h3>4. Temuan Utama</h3>
+            <p>Melalui analisis data awal, <b>saya</b> mengidentifikasi distribusi spesies yang tidak merata di wilayah Magdalena, Kolombia. Visualisasi EDA menunjukkan dominasi spesies tertentu yang menjadi indikator kesehatan ekosistem di wilayah restorasi tersebut.</p>
+
+            <h3>5. Kesimpulan</h3>
+            <p>Inovasi dalam identifikasi suara ini sangat penting untuk memahami dampak restorasi terhadap biodiversitas. <b>Saya</b> menyimpulkan bahwa penggunaan model klasifikasi otomatis dapat mempermudah upaya konservasi dalam skala besar dengan biaya yang jauh lebih rendah dibanding survei lapangan manual.</p>
+        </div>
+
+        <div class="btn-group">
+            <a href="index.html" class="btn btn-secondary">
+                <i class="fas fa-arrow-left"></i> Kembali
+            </a>
+
+            <a href="Bird_Data Modeling_ProjectFinal.ipynb" download class="btn btn-outline">
+                <i class="fab fa-python"></i> Download Notebook (.ipynb)
+            </a>
+
+            <a href="_IS411_Week11_Group_08_Even-2024-2025 (2).pdf" download class="btn btn-primary">
+                <i class="fas fa-file-pdf"></i> Download Jurnal PDF
+            </a>
+        </div>
+    </div>
+
+</body>
+</html>
