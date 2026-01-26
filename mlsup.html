@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Journal Summary - Jonathan Chandra</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <style>
+        :root {
+            --bg-color: #f4f7f6;
+            --text-color: #333;
+            --primary-color: #3f51b5; /* Warna Indigo untuk tema Deep Learning/AI */
+            --accent-color: #673ab7; /* Warna Deep Purple untuk aksen teknologi */
+            --card-bg: #ffffff;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --border-color: #ddd;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            margin: 0;
+            padding: 40px 20px;
+        }
+
+        .verif-container {
+            background: var(--card-bg);
+            max-width: 800px;
+            width: 100%;
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+
+        .pdf-viewer {
+            width: 100%;
+            height: 500px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            margin-bottom: 2rem;
+            background-color: #f9f9f9;
+        }
+
+        .pdf-frame {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        h1 { color: var(--primary-color); margin-bottom: 0.5rem; font-size: 1.8rem; }
+        .subtitle { color: #666; font-style: italic; margin-bottom: 2rem; line-height: 1.4; }
+
+        .journal-content {
+            text-align: left;
+            line-height: 1.8;
+            color: #444;
+        }
+
+        .journal-content h3 {
+            color: var(--accent-color);
+            border-bottom: 2px solid #eee;
+            padding-bottom: 5px;
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .journal-content ul {
+            padding-left: 20px;
+            margin-bottom: 1rem;
+        }
+
+        .btn-group {
+            margin-top: 3rem;
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            border-top: 1px solid #eee;
+            padding-top: 1.5rem;
+        }
+
+        .btn {
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.9rem;
+            transition: 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary { background: var(--accent-color); color: white; }
+        .btn-secondary { background: #6c757d; color: white; }
+        
+        .btn:hover { opacity: 0.8; transform: translateY(-2px); }
+
+        @media (max-width: 768px) {
+            .verif-container { padding: 1.5rem; }
+            .pdf-viewer { height: 300px; }
+            .btn-group { flex-direction: column; }
+            .btn { width: 100%; justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="verif-container">
+        <h1>Deep Learning for Cybersecurity</h1>
+        <p class="subtitle">Research: "Pengembangan Model Deep Learning Berbasis Transformer untuk Mendeteksi Spam Email"</p>
+        
+        <div class="pdf-viewer">
+            <embed src="Laporan Deep learning Kelompok.pdf" type="application/pdf" class="pdf-frame">
+        </div>
+
+        <div class="journal-content">
+            <p><strong>Abstrak:</strong> Dalam proyek ini, <b>saya</b> dan tim mengembangkan model deteksi spam otomatis untuk memitigasi risiko keamanan siber seperti <i>phishing</i> dan <i>malware</i>. Kami mengevaluasi berbagai arsitektur model saraf mendalam untuk memahami konteks dan struktur bahasa dalam email guna memberikan perlindungan yang lebih adaptif dibandingkan metode tradisional berbasis aturan.</p>
+
+            <h3>1. Latar Belakang & Masalah</h3>
+            <p>Peningkatan penggunaan email diikuti oleh evolusi teknik spam yang semakin canggih. Metode deteksi konvensional seringkali gagal mengenali pola spam yang dinamis. Melalui pendekatan <i>Deep Learning</i>, <b>saya</b> berupaya menciptakan sistem yang mampu mengekstraksi fitur tekstual secara mendalam untuk membedakan antara email sah (*ham*) dan email berbahaya (*spam*).</p>
+
+            <h3>2. Metodologi Penelitian</h3>
+            <p>Tahapan pengembangan model yang <b>saya</b> lakukan meliputi:</p>
+            <ul>
+                <li><b>Dataset:</b> Menggunakan *SpamAssassin Public Corpus* yang mencakup kategori spam, *easy ham*, dan *hard ham*.</li>
+                <li><b>Preprocessing:</b> Tahap pembersihan data, ekstraksi konten, tokenisasi, serta penerapan *padding* untuk memastikan konsistensi input data.</li>
+                <li><b>Model Architecture:</b> Membandingkan beberapa arsitektur saraf seperti RNN, LSTM, BiLSTM, GRU, dan CNN.</li>
+            </ul>
+
+            <h3>3. Analisis Model</h3>
+            <p>Fokus utama penelitian ini adalah menguji kemampuan model dalam memahami urutan kata. <b>Saya</b> menganalisis bagaimana model **BiLSTM** (Bidirectional Long Short-Term Memory) mampu memproses informasi dari dua arah (masa lalu dan masa depan) untuk menangkap konteks kalimat secara lebih akurat dibandingkan model searah tradisional.</p>
+
+            <h3>4. Hasil Eksperimen</h3>
+            <p>Hasil eksperimen menunjukkan keunggulan signifikan pada model **BiLSTM**. Model ini terbukti paling tangguh dalam mengidentifikasi email spam yang memiliki kemiripan struktur dengan email normal. Selain itu, integrasi dengan lapisan CNN membantu dalam mengekstraksi pola lokal yang spesifik dalam teks email.</p>
+
+            <h3>5. Kesimpulan</h3>
+            <p>Otomatisasi deteksi spam menggunakan <i>Deep Learning</i> memberikan tingkat akurasi dan ketangguhan yang tinggi. <b>Saya</b> menyimpulkan bahwa pemanfaatan konteks bahasa dan ekstraksi pola lokal adalah kunci utama dalam membangun sistem keamanan email yang mampu menghadapi teknik spam yang terus berkembang di masa depan.</p>
+        </div>
+
+        <div class="btn-group">
+            <a href="index.html" class="btn btn-secondary">
+                <i class="fas fa-arrow-left"></i> Kembali
+            </a>
+
+            <a href="IS794-Deep_Learning-A-Group06-IPYNB_Final.ipynb" download class="btn btn-outline">
+                <i class="fab fa-python"></i> Download Notebook (.ipynb)
+            </a>
+
+            <a href="Laporan_Deep_learning_Kelompok.pdf" download class="btn btn-primary">
+                <i class="fas fa-file-pdf"></i> Download Laporan PDF
+            </a>
+        </div>
+    </div>
+
+</body>
+</html>
