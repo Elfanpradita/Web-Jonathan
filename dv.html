@@ -15,7 +15,7 @@
         }
 
         body {
-            font-family: -apple-system, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             background-color: var(--bg-color);
             color: var(--text-color);
             display: flex;
@@ -28,19 +28,29 @@
 
         .verif-container {
             background: var(--card-bg);
-            max-width: 800px;
+            max-width: 900px;
             width: 100%;
-            padding: 2rem;
+            padding: 2.5rem;
             border-radius: 15px;
             box-shadow: var(--shadow);
             text-align: center;
         }
 
-        .cert-img {
+        /* Improved PDF Container */
+        .pdf-wrapper {
+            position: relative;
             width: 100%;
-            border-radius: 8px;
-            border: 1px solid #ddd;
+            height: 500px; /* Adjust height as needed */
             margin-bottom: 1.5rem;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #ddd;
+        }
+
+        .pdf-frame {
+            width: 100%;
+            height: 100%;
+            border: none;
         }
 
         h1 { color: var(--primary-color); margin-bottom: 0.5rem; }
@@ -49,21 +59,35 @@
         .btn-group {
             margin-top: 2rem;
             display: flex;
-            gap: 1rem;
             justify-content: center;
         }
 
         .btn {
-            padding: 0.8rem 1.5rem;
+            padding: 0.8rem 2rem;
             border-radius: 50px;
             text-decoration: none;
             font-weight: bold;
-            transition: 0.3s;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
         }
 
-        .btn-primary { background: var(--primary-color); color: white; }
-        .btn-secondary { background: #6c757d; color: white; }
-        .btn:hover { opacity: 0.8; transform: translateY(-2px); }
+        .btn-secondary { 
+            background: #6c757d; 
+            color: white; 
+        }
+
+        .btn:hover { 
+            opacity: 0.9; 
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        @media (max-width: 600px) {
+            .pdf-wrapper { height: 350px; }
+            .verif-container { padding: 1.5rem; }
+        }
     </style>
 </head>
 <body>
@@ -72,16 +96,21 @@
         <h1>Certificate Verification</h1>
         <p><strong>IS412: Data Visualization</strong></p>
         
-        <embed src="Sertifikat_Data_Visualization.pdf" type="application/pdf" class="pdf-frame">
+        <div class="pdf-wrapper">
+            <iframe src="Sertifikat_Data_Visualization.pdf" class="pdf-frame"></iframe>
+        </div>
 
         <div style="text-align: left; margin: 1rem 0;">
             <p><strong>Brief Description:</strong></p>
-            <p>This certificate was proudly presented to <b>Jonathan Chandra</b> for participating in the <b>Final Project Presentation</b> for the course <b>IS412: Data Visualization</b>. This event was a collaborative initiative between <b>Universitas Multimedia Nusantara (UMN)</b>, Indonesia, and <b>Universiti Teknologi MARA (UiTM)</b>. The presentation took place on the 27th and 28th of May 2025.</p>
+            <p>
+                This certificate was presented to <b>Jonathan Chandra</b> [cite: 7] for participating in the <b>Final Project Presentation</b> [cite: 9] for the course <b>IS412: Data Visualization</b>[cite: 10]. 
+                The event was a collaborative initiative between <b>Universitas Multimedia Nusantara (UMN)</b> [cite: 15] and <b>Universiti Teknologi MARA (UiTM)</b>[cite: 3]. 
+                The presentation was held on the <b>27th and 28th of May 2025</b>[cite: 12].
+            </p>
         </div>
 
         <div class="btn-group">
-            <a href="index.html" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Back</a>
-            <a href="https://www.umn.ac.id" target="_blank" class="btn btn-primary"><i class="fas fa-check-circle"></i> Verify at UMN</a>
+            <a href="index.html" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Back to Portfolio</a>
         </div>
     </div>
 
